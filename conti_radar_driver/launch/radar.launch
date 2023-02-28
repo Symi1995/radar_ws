@@ -1,0 +1,43 @@
+<launch>
+
+    <node
+        name="radar_conti"
+        pkg="radar_conti"
+        type="radar_conti"
+        output="screen"
+    />
+    <node
+        name="emergency_brake"
+        pkg="emergency_brake"
+        type="emergency_brake"
+        output="screen"
+    />
+    
+    <node
+        pkg="tf2_ros"
+        type="static_transform_publisher"
+        name="radar_broadcaster"
+        args="1 0 0 0 0 0 base_link radar"
+    />
+    <node
+        pkg="tf2_ros"
+        type="static_transform_publisher"
+        name="radar_closest_broadcaster"
+        args="0 0 0 0 0 0 radar radar_closest_object"
+    />
+    <node
+        pkg="tf2_ros"
+        type="static_transform_publisher"
+        name="radar_all_data_broadcaster"
+        args="0 0 0 0 0 0 radar radar_all_data"
+    />
+
+
+    <node
+        name="rviz_radar"
+        pkg="rviz"
+        type="rviz"
+        args="-d $(find radar_conti)/rviz/radar.rviz" 
+    />
+
+</launch>

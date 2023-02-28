@@ -1,0 +1,27 @@
+<launch>
+
+    <node
+        name="socketcan_to_topic_node"
+        pkg="socketcan_bridge"
+        type="socketcan_to_topic_node"
+        output="screen"
+        args="_can_device:=can1"
+    />
+
+    <node
+        name="topic_to_socketcan_node"
+        pkg="socketcan_bridge"
+        type="socketcan_to_topic_node"
+        output="screen"
+        args="_can_device:=can1"
+    />
+
+    <node
+        name="configuration_node"
+        pkg="socketcan_bridge"
+        type="configuration_node"
+        output="screen"
+    />
+    
+
+</launch>
